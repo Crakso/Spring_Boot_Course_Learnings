@@ -20,6 +20,6 @@ public class AdmissionRecordEntity {
     private Integer fees;
 
     @OneToOne
-    @JoinColumn(name = "student")
+    @JoinColumn(name = "student", nullable = false)
     private StudentEntity student;
 }

@@ -5,17 +5,18 @@ import com.neerajbisht.Module3.entity.dto.StudentDTO;
 import com.neerajbisht.Module3.exception.ResourceNotFoundException;
 import com.neerajbisht.Module3.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class StudentService {
@@ -32,7 +33,7 @@ public class StudentService {
     }
 
     public Page<StudentDTO> findAllStudent(Integer pageNumber, String sortBy) {
-
+        log.info("");
         Pageable pageable = PageRequest.of(pageNumber, PageSize, Sort.by(sortBy));
 
         Page<StudentEntity> students = studentRepository.findAllStudents(pageable);
